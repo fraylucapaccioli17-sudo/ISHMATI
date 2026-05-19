@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mapa interactivo de Morelos</title>
+  <link rel="stylesheet" href="Mapa.css">
+</head>
+<body>
+
+<h1>Rompecabezas del Estado de Morelos</h1>
+
+<div class="info">
+  ⏱️ Tiempo: <span id="tiempo">120</span> s |
+  🎯 Puntos: <span id="puntos">0</span>
+</div>
+
+<div class="contenedor">
+
+  <!-- MAPA SVG -->
+  <svg viewBox="0 0 400 400" id="mapa">
+
+    <!-- CUERNAVACA -->
+    <path id="cuernavaca"
+      d="M120 150 L170 130 L200 160 L160 190 L120 180 Z"
+      onclick="mostrarPregunta('cuernavaca')" />
+
+    <!-- JIUTEPEC -->
+    <path id="jiutepec"
+      d="M160 200 L210 180 L240 210 L200 240 L160 230 Z"
+      onclick="mostrarPregunta('jiutepec')" />
+
+    <!-- CUAUTLA -->
+    <path id="cuautla"
+      d="M250 160 L300 150 L330 190 L290 220 L250 200 Z"
+      onclick="mostrarPregunta('cuautla')" />
+
+  </svg>
+
+  <!-- PANEL -->
+  <div class="panel">
+    <p><strong>Selecciona un municipio</strong></p>
+    <button onclick="reiniciar()">Reiniciar</button>
+  </div>
+
+</div>
+
+<!-- PREGUNTAS -->
+<div id="pregunta" class="pregunta"></div>
+
+<script src="mapa_script.js"></script>
+</body>
+</html>
