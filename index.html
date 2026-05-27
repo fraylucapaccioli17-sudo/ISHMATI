@@ -9,18 +9,29 @@
 </head>
 <body>
 
-    <h1>Proyecto</h1>
+    <!-- HEADER CON LOGO REDONDEADO -->
+    <div class="header-container">
+        <div class="logo-container">
+            <img src="Imagenes/Dimg.jpeg" alt="Logo" class="logo" onerror="this.src='https://via.placeholder.com/70x70?text=Logo'">
+            <div class="logo-text">
+                Proyecto Escolar<br>
+                <small>Fray Luca Paccioli</small>
+            </div>
+        </div>
+        <h1>Proyecto</h1>
+        <div style="width: 70px;"></div> <!-- Espaciador para centrar el título -->
+    </div>
 
+  
     <nav>
         <a href="index.html">Inicio</a>
-        <a href="informatica.html">Informática</a>
-        <a href="diseño.html">Diseño</a>
+        <a href="diseño.html">Diseño grafico</a>
+        <a href="info/informatica.html">Informática Administrativa</a>
         <a href="turismo.html">Turismo</a>
-        <a href="Mapa/Mapa.html">Mapa Morelos</a>
     </nav>
 
     <div class="carousel">
-        <img src="Imagenes/IMG1.webp" class="active">
+        <img src="Imagenes/Dimg.jpeg" class="active">
         <img src="Imagenes/img2.jpg">
         <img src="Imagenes/img3.webp">
     </div>
@@ -123,70 +134,61 @@
         </div>
     </section>
 
-    <!-- NUEVA SECCIÓN: ARTESANOS -->
-    
+    <!-- SECCIÓN ARTESANOS -->
+    <section class="artesanos">
+        <h2>Artesanos de Morelos</h2>
+        <div class="artesanos-grid">
+            <a href="artesano1.html" class="artesano-card">
+                <img src="Img-artesanos/tallado.jpeg" alt="Artesano Valentín">
+                <div class="artesano-info">
+                    <h3>Sr. Valentín</h3>
+                    <p>Artesanías de Madera - Tlaltizapán</p>
+                </div>
+            </a>
+            <a href="artesano2.html" class="artesano-card">
+                <img src="Img-artesanos/PALPAN.jpg" alt="David Rosendiz">
+                <div class="artesano-info">
+                    <h3>David Rosendiz</h3>
+                    <p>Mezcal de Palpan - Miacatlán</p>
+                </div>
+            </a>
+            <a href="artesano3.html" class="artesano-card">
+                <img src="Img-artesanos/MUSICA_REGIONAL.jpg" alt="Rogelio Conde ">
+                <div class="artesano-info">
+                    <h3>Rogelio Conde</h3>
+                    <p>Tallado de Pochote y Ceramica- Tepoztlan</p>
+                </div>
+            </a>
+            <a href="artesano4.html" class="artesano-card">
+                <img src="Img-artesanos/pinturaoleo.jpeg" alt="Rogelio García">
+                <div class="artesano-info">
+                    <h3>Rogelio García</h3>
+                    <p>Pintura Óleo y Acrílico</p>
+                </div>
+            </a>
+            <a href="artesano5.html" class="artesano-card">
+                <img src="Img-artesanos/souvenir.webp" alt="Lissete Zamora">
+                <div class="artesano-info">
+                    <h3>Lissete Zamora</h3>
+                    <p>Souvenirs de Paisajes - Xochitepec</p>
+                </div>
+            </a>
+            <a href="artesano6.html" class="artesano-card">
+                <img src="Img-artesanos/licor.jpeg" alt="Sr. Alejandro">
+                <div class="artesano-info">
+                    <h3>Sr. Alejandro</h3>
+                    <p>Licor de Caña y Café - Zacualpan de Amilpas</p>
+                </div>
+            </a>
+            <a href="artesano7.html" class="artesano-card">
+                <img src="Img-artesanos/totomax.jpg" alt="María Castañeda">
+                <div class="artesano-info">
+                    <h3>María Castañeda</h3>
+                    <p>Figuras de Totomuxtle - Cuautla</p>
+                </div>
+            </a>
+        </div>
     </section>
-<section class="artesanos">
-    <h2>Artesanos de Morelos</h2>
-    <div class="artesanos-grid">
-        <!-- Artesano 1 -->
-        <a href="artesano1.html" class="artesano-card">
-            <img src="Img-artesanos/ARTESANIAS.jpg" alt="Artesano Valentín">
-            <div class="artesano-info">
-                <h3>Sr. Valentín</h3>
-                <p>Artesanías de Madera - Tlaltizapán</p>
-            </div>
-        </a>
-        <!-- Artesano 2 -->
-        <a href="artesano2.html" class="artesano-card">
-            <img src="Img-artesanos/PALPAN.jpg" alt="David Rosendiz">
-            <div class="artesano-info">
-                <h3>David Rosendiz</h3>
-                <p>Mezcal de Palpan - Miacatlán</p>
-            </div>
-        </a>
-        <!-- Artesano 3 -->
-        <a href="artesano3.html" class="artesano-card">
-            <img src="Img-artesanos/MUSICA_REGIONAL.jpg" alt="Profesor Carlos Silverio">
-            <div class="artesano-info">
-                <h3>Profesor Carlos Silverio</h3>
-                <p>Música Regional - Jiutepec</p>
-            </div>
-        </a>
-        <!-- Artesano 4 -->
-        <a href="artesano4.html" class="artesano-card">
-            <img src="Img-artesanos/PINTURA.jpg" alt="Rogelio García">
-            <div class="artesano-info">
-                <h3>Rogelio García</h3>
-                <p>Pintura Óleo y Acrílico</p>
-            </div>
-        </a>
-        <!-- Artesano 5 -->
-        <a href="artesano5.html" class="artesano-card">
-            <img src="Img-artesanos/souvenir.webp" alt="Lissete Zamora">
-            <div class="artesano-info">
-                <h3>Lissete Zamora</h3>
-                <p>Souvenirs de Paisajes - Xochitepec</p>
-            </div>
-        </a>
-        <!-- Artesano 6 -->
-        <a href="artesano6.html" class="artesano-card">
-            <img src="Img-artesanos/CAÑA.jpg" alt="Sr. Alejandro">
-            <div class="artesano-info">
-                <h3>Sr. Alejandro</h3>
-                <p>Licor de Caña y Café - Zacualpan de Amilpas</p>
-            </div>
-        </a>
-        <!-- Artesano 7 -->
-        <a href="artesano7.html" class="artesano-card">
-            <img src="Img-artesanos/TOTOMOX.jpg" alt="María Castañeda">
-            <div class="artesano-info">
-                <h3>María Castañeda</h3>
-                <p>Figuras de Totomuxtle - Cuautla</p>
-            </div>
-        </a>
-    </div>
-</section>
 
     <footer>
         <p>© 2026 Proyecto Escolar Universidad Fray Luca Paccioli - 6° Informática</p>

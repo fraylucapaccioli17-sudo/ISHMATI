@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juegos en Scratch | Pueblos Indígenas de Morelos</title>
+    <link rel="stylesheet" href="../estilos/informatica.css">
+    <style>
+        .tema-detalle {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 60px 20px 60px 20px;
+            box-shadow: 0 0 0 6px #c9a03d, 0 0 0 12px #0a2f6c;
+            text-align: center;
+        }
+        .tema-detalle h2 {
+            color: #0a2f6c;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        .btn-volver {
+            display: inline-block;
+            background: linear-gradient(90deg, #0a1f44, #1e3a8a);
+            color: #fae47e;
+            padding: 15px 30px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            border: 2px solid #c9a03d;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+        .btn-volver:hover {
+            background: #c9a03d;
+            color: #0a1f44;
+            transform: scale(1.05);
+        }
+        .juegos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            margin: 40px 0;
+        }
+        .juego-card {
+            background: linear-gradient(145deg, #ffffff, #ebf3ff);
+            padding: 25px;
+            width: 350px;
+            border-radius: 40px 20px 40px 20px;
+            box-shadow: 10px 10px 20px rgba(0, 20, 60, 0.2);
+            border: 2px solid #c9a03d;
+            transition: 0.3s;
+        }
+        .juego-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 0 3px #c9a03d;
+        }
+        .juego-card h3 {
+            color: #0a2f6c;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        .juego-card p {
+            color: #1e3a8a;
+            text-align: left;
+            margin: 10px 0;
+        }
+        .btn-jugar {
+            display: inline-block;
+            background: #c9a03d;
+            color: #0a1f44;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+        .btn-jugar:hover {
+            background: #0a2f6c;
+            color: #fae47e;
+            transform: scale(1.05);
+        }
+        .region-info {
+            background: #0a1f44;
+            padding: 25px;
+            border-radius: 30px;
+            margin: 30px 0;
+            color: #fae47e;
+            text-align: left;
+        }
+        .region-info h3 {
+            color: #c9a03d;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🐱 Juegos en Scratch</h1>
+    <h1 style="font-size: 1.8rem; margin-top: -10px;">🎮 Pueblos Indígenas de Morelos</h1>
+
+    <nav>
+        <a href="../index.html">Inicio</a>
+        <a href="informatica.html">Informática</a>
+        <a href="../diseño.html">Diseño</a>
+        <a href="../turismo.html">Turismo</a>
+   
+    </nav>
+
+    <div class="tema-detalle">
+        <h2>🎮 Programación creativa con bloques</h2>
+        <p>Los estudiantes crearon juegos interactivos en Scratch para aprender sobre <strong>los pueblos indígenas de Morelos</strong> y su cultura.</p>
+        
+        <!-- INFORMACIÓN DE COATETELCO -->
+        <div class="region-info">
+            <h3>📍 Coatetelco - Zona Arqueológica y Pueblo Indígena</h3>
+            <p>Coatetelco es una de las zonas arqueológicas más importantes de Morelos. Perteneció a la cultura Tlahuica y su nombre significa "Lugar de serpientes" en náhuatl. Los chicos desarrollaron juegos basados en esta región.</p>
+            <ul>
+                <li>🏛️ Antigua ciudad prehispánica con más de 1000 años de historia</li>
+                <li>🌾 Pertenece a la región de los <strong>pueblos indígenas Tlahuicas</strong></li>
+                <li>💧 Cuenta con una laguna y ceremonias ancestrales</li>
+            </ul>
+        </div>
+
+        <!-- LOS DOS JUEGOS REALIZADOS POR LOS CHICOS -->
+        <h2 style="font-size: 1.8rem; margin: 30px 0 20px 0;">🎮 Juegos creados por los alumnos</h2>
+        
+        <div class="juegos-container">
+            <!-- Juego 1 -->
+            <div class="juego-card">
+                <div style="font-size: 4rem;">🐟🌊</div>
+                <h3>Coatetelco: Limpia el Lago</h3>
+                    <p>Un juego ecológico donde un pez valiente lucha contra la contaminación para salvar el Lago de Coatetelco en Morelos.</p>
+                    <p><strong>🎯 Mecánica:</strong> Controla al pez con WASD, dispara burbujas con clic izquierdo y elimina toda la basura (botellas, latas y bolsas) antes de que te toquen.</p>
+                  <a href="Juego Coatetelco/mojarra.html" class="btn-jugar">🎮 Jugar ahora</a>
+                </div>
+
+            <!-- Juego 2 -->
+            <div class="juego-card">
+                <div style="font-size: 4rem;">🌾</div>
+               <h3>🌽 Morelos: El Legado de los Pueblos Originarios</h3>
+                <p>Explora los pueblos originarios de Morelos: Tlahuicas, Xochimilcas y Cohuatlicas. Aprende sus tradiciones y costumbres.</p>
+                <p><strong>🎯 Mecánica:</strong> Completa misiones, recolecta objetos tradicionales y conviértete en guardián de la cultura morelense.</p>
+                <a href="laberinto/index.html" class="btn-jugar">🎮 Jugar ahora</a>
+            </div>
+        </div>
+
+
+        <a href="../info/informatica.html" class="btn-volver">⬅ Volver a Informática</a>
+    </div>
+
+    <footer>
+        <p>⚡ Proyecto Informática 65 ⚡</p>
+        <p>🎮 Juegos en Scratch | Pueblos Indígenas de Morelos - Coatetelco</p>
+    </footer>
+
+</body>
+</html>

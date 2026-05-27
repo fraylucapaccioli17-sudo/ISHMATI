@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Municipios de Morelos - Juego Interactivo</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header>
+    <div class="header-text">
+        <h1>🗺️ Municipios de Morelos</h1>
+        <p>Juego interactivo - Adivina el municipio</p>
+    </div>
+    <button id="btn-reiniciar" class="btn-reinicio">🔄 Nuevo juego</button>
+</header>
+
+<!-- Instrucciones del juego -->
+<div class="instrucciones" id="instrucciones">
+    <div class="instrucciones-header">
+        <span>📖 ¿Cómo jugar?</span>
+        <button id="cerrar-instrucciones" class="btn-cerrar">✖</button>
+    </div>
+    <ul>
+        <li>⭐ Se te mostrará una <strong>pregunta</strong> y una <strong>pista</strong></li>
+        <li>🗺️ Haz clic en el <strong>municipio correcto</strong> en el mapa</li>
+        <li>✅ Si aciertas, el municipio se pondrá <strong>rojo</strong> y sumarás un punto</li>
+        <li>📊 Al final verás tu puntuación total</li>
+        <li>🔄 Presiona "Nuevo juego" para reiniciar</li>
+    </ul>
+</div>
+
+<!-- Panel de pregunta -->
+<div id="reto" class="reto-box">
+    <div class="reto-pregunta">🎯 Cargando juego...</div>
+    <div class="reto-pista">💡</div>
+</div>
+
+<div class="main">
+    <!-- Contenedor del mapa -->
+    <div id="map-container">
+        <svg id="mapa-svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid meet"></svg>
+    </div>
+    
+    <!-- Panel lateral de información -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <span>📌 Información</span>
+        </div>
+        <div id="info-panel">
+            <p>Haz clic en cualquier municipio</p>
+        </div>
+        <div class="puntuacion">
+            <span>🏆 Aciertos:</span>
+            <span id="contador-aciertos">0</span>
+            <span>/</span>
+            <span id="total-preguntas">10</span>
+        </div>
+    </div>
+</div>
+
+<!-- Botón flotante de instrucciones (para móvil) -->
+<button id="abrir-instrucciones" class="btn-instrucciones-flotante">❓</button>
+
+<script src="https://unpkg.com/d3@7"></script>
+<script src="mapa.js"></script>
+</body>
+</html>

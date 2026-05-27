@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Morelos: Aventura Indígena</title>
+<style>
+    * {
+        touch-action: manipulation;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+    
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: 'Segoe UI', 'Arial', sans-serif;
+        color: #f5e6c8;
+        touch-action: pan-x pan-y;
+        position: relative;
+    }
+    
+    /* Fondo con imagen azteca.jpg */
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('azteca.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        filter: brightness(0.7);
+        z-index: -2;
+    }
+    
+    /* Capa oscura semitransparente para mejorar legibilidad */
+    body::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.5);
+        z-index: -1;
+    }
+    
+    .game-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        width: 100%;
+        box-sizing: border-box;
+        z-index: 1;
+    }
+    
+    canvas {
+        display: block;
+        margin: auto;
+        background: rgba(45, 90, 63, 0.85);
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+        width: auto;
+        height: auto;
+        cursor: pointer;
+        touch-action: none;
+        backdrop-filter: blur(2px);
+    }
+    
+    #info {
+        background: rgba(0,0,0,0.8);
+        padding: 8px 16px;
+        border-radius: 12px;
+        backdrop-filter: blur(5px);
+        font-size: 14px;
+        font-weight: bold;
+        border-left: 4px solid #ffb347;
+        margin-bottom: 10px;
+        width: fit-content;
+        text-align: center;
+    }
+    
+    .controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 15px;
+        gap: 10px;
+    }
+    
+    .dpad {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .dpad-row {
+        display: flex;
+        gap: 12px;
+        justify-content: center;
+    }
+    
+    .ctrl-btn {
+        background: rgba(0,0,0,0.8);
+        border: 2px solid #ffb347;
+        border-radius: 60px;
+        width: 65px;
+        height: 65px;
+        font-size: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        touch-action: manipulation;
+        transition: all 0.05s ease;
+        color: #ffb347;
+        font-weight: bold;
+        backdrop-filter: blur(5px);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    }
+    
+    .ctrl-btn:active {
+        transform: scale(0.92);
+        background: rgba(255,180,71,0.5);
+        color: white;
+    }
+    
+    .reset-btn {
+        background: rgba(0,0,0,0.8);
+        border: 2px solid #ff6b6b;
+        border-radius: 40px;
+        padding: 8px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #ff6b6b;
+        cursor: pointer;
+        margin-top: 8px;
+        touch-action: manipulation;
+        backdrop-filter: blur(5px);
+    }
+    
+    .reset-btn:active {
+        transform: scale(0.95);
+        background: rgba(255,107,107,0.3);
+    }
+    
+    @media (max-width: 700px) {
+        .ctrl-btn {
+            width: 55px;
+            height: 55px;
+            font-size: 28px;
+        }
+        
+        #info {
+            font-size: 12px;
+            padding: 6px 12px;
+        }
+        
+        .reset-btn {
+            padding: 6px 16px;
+            font-size: 12px;
+        }
+    }
+    
+    @media (max-width: 500px) {
+        .ctrl-btn {
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+        }
+        
+        .dpad-row {
+            gap: 10px;
+        }
+    }
+    
+    .descripcion {
+        background: rgba(0,0,0,0.7);
+        padding: 8px 15px;
+        border-radius: 10px;
+        font-size: 11px;
+        text-align: center;
+        margin-top: 10px;
+        max-width: 90%;
+        backdrop-filter: blur(4px);
+    }
+    
+    .descripcion p {
+        margin: 5px 0;
+    }
+</style>
+</head>
+<body>
+<div class="game-container">
+    <div id="info">
+        <b>🏺 Nivel:</b> <span id="level">1</span> | <b>✨ Objetivo:</b> Llegar a la meta
+    </div>
+    
+    <canvas id="game"></canvas>
+    
+    <div class="controls">
+        <div class="dpad">
+            <div class="dpad-row">
+                <div class="ctrl-btn" data-dir="up">▲</div>
+            </div>
+            <div class="dpad-row">
+                <div class="ctrl-btn" data-dir="left">◀</div>
+                <div class="ctrl-btn" data-dir="down">▼</div>
+                <div class="ctrl-btn" data-dir="right">▶</div>
+            </div>
+        </div>
+        <div class="reset-btn" id="resetBtn">🔄 Reiniciar nivel</div>
+    </div>
+    
+    <div class="descripcion">
+        <p>🌽 <strong>Morelos: Aventura Indígena</strong> — Explora los pueblos Tlahuicas, Xochimilcas y Cohuatlicas. Esquiva al guardián y llega a la meta para convertirte en Guardián de la Cultura Morelense. 🪶🏺</p>
+    </div>
+</div>
+
+<script>
+const canvas = document.getElementById("game");
+const ctx = canvas.getContext("2d");
+
+// Variables responsivas
+let tileSize = 75;
+let canvasSize = 600;
+
+function resizeCanvas() {
+    const container = document.querySelector('.game-container');
+    const maxWidth = Math.min(window.innerWidth - 40, 600);
+    const maxHeight = window.innerHeight - 280;
+    
+    let size = Math.min(maxWidth, maxHeight, 600);
+    canvasSize = size;
+    tileSize = size / 8;
+    
+    canvas.width = size;
+    canvas.height = size;
+    
+    canvas.style.width = `${size}px`;
+    canvas.style.height = `${size}px`;
+}
+
+window.addEventListener('resize', () => {
+    resizeCanvas();
+    drawFull();
+});
+
+// Sprites con emojis como fallback
+const playerSprite = new Image();
+const enemySprite = new Image();
+const goalSprite = new Image();
+
+let loaded = 0;
+let spritesReady = false;
+
+function checkImages(){
+    loaded++;
+    if(loaded === 3){
+        spritesReady = true;
+        drawFull();
+    }
+}
+
+playerSprite.onload = checkImages;
+enemySprite.onload = checkImages;
+goalSprite.onload = checkImages;
+playerSprite.onerror = () => { console.log("Usando fallback para player"); checkImages(); };
+enemySprite.onerror = () => { console.log("Usando fallback para enemy"); checkImages(); };
+goalSprite.onerror = () => { console.log("Usando fallback para goal"); checkImages(); };
+
+playerSprite.src = "img/player.png";
+enemySprite.src = "img/enemy.png";
+goalSprite.src = "img/goal.png";
+
+let level = 0;
+
+const levels = [
+    [
+        [0,0,0,1,0,0,0,2],
+        [1,1,0,1,0,1,0,1],
+        [0,0,0,0,0,1,0,0],
+        [0,1,1,1,0,0,0,1],
+        [0,0,0,1,0,1,0,0],
+        [1,1,0,0,0,1,1,0],
+        [0,0,0,1,0,0,0,0],
+        [0,1,0,0,0,1,1,0]
+    ],
+    [
+        [0,1,0,0,0,1,0,2],
+        [0,1,0,1,0,1,0,1],
+        [0,0,0,1,0,0,0,0],
+        [1,1,0,1,1,1,0,1],
+        [0,0,0,0,0,1,0,0],
+        [0,1,1,1,0,1,1,0],
+        [0,0,0,0,0,0,0,0],
+        [1,1,0,1,1,0,1,0]
+    ],
+    [
+        [0,1,0,1,0,0,0,2],
+        [0,1,0,1,0,1,1,1],
+        [0,0,0,0,0,0,0,0],
+        [1,1,1,1,1,1,0,1],
+        [0,0,0,0,0,1,0,0],
+        [0,1,1,1,0,1,1,0],
+        [0,0,0,1,0,0,0,0],
+        [1,0,0,0,1,1,0,0]
+    ],
+    [
+        [0,1,1,0,0,1,0,2],
+        [0,0,1,0,1,1,0,1],
+        [1,0,0,0,0,0,0,0],
+        [1,1,1,1,0,1,1,0],
+        [0,0,0,0,0,0,1,0],
+        [0,1,1,1,1,0,1,0],
+        [0,0,0,0,0,0,0,0],
+        [1,1,0,1,1,1,0,0]
+    ],
+    [
+        [0,1,0,1,0,1,0,2],
+        [0,1,0,1,0,1,0,1],
+        [0,0,0,0,0,0,0,0],
+        [1,1,1,1,1,1,0,1],
+        [0,0,0,0,0,1,0,0],
+        [0,1,0,1,0,1,1,0],
+        [0,0,0,1,0,0,0,0],
+        [1,0,0,0,1,1,0,0]
+    ]
+];
+
+let player = {x:0, y:0};
+let enemy = {x:7, y:7};
+let enemyTimer = 0;
+
+function resetPositions(){
+    player = {x:0, y:0};
+    enemy = {x:7, y:7};
+    drawFull();
+}
+
+function drawBackground(){
+    // El fondo ahora lo maneja el CSS con azteca.jpg
+    // Hacemos el canvas ligeramente transparente para que se vea la imagen de fondo
+    ctx.fillStyle = "rgba(0,0,0,0.3)";
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+}
+
+function drawMaze(){
+    let maze = levels[level];
+    
+    for(let y=0;y<maze.length;y++){
+        for(let x=0;x<maze[y].length;x++){
+            if(maze[y][x] === 1){
+                ctx.fillStyle = "rgba(107, 62, 38, 0.85)";
+                ctx.fillRect(x*tileSize,y*tileSize,tileSize,tileSize);
+                ctx.strokeStyle = "rgba(139, 94, 60, 0.9)";
+                ctx.lineWidth = 1;
+                ctx.strokeRect(x*tileSize+2,y*tileSize+2,tileSize-4,tileSize-4);
+            }
+        }
+    }
+    
+    // Dibujar meta
+    for(let y=0;y<maze.length;y++){
+        for(let x=0;x<maze[y].length;x++){
+            if(maze[y][x] === 2){
+                if(spritesReady && goalSprite.complete && goalSprite.naturalWidth > 0){
+                    ctx.drawImage(goalSprite, x*tileSize, y*tileSize, tileSize, tileSize);
+                } else {
+                    ctx.fillStyle = "rgba(255, 215, 0, 0.9)";
+                    ctx.fillRect(x*tileSize,y*tileSize,tileSize,tileSize);
+                    ctx.fillStyle = "#b8860b";
+                    ctx.font = `${tileSize/2}px Arial`;
+                    ctx.fillText("🏺", x*tileSize + tileSize/3, y*tileSize + tileSize/1.5);
+                }
+            }
+        }
+    }
+}
+
+function drawPlayer(){
+    if(spritesReady && playerSprite.complete && playerSprite.naturalWidth > 0){
+        ctx.drawImage(playerSprite, player.x*tileSize, player.y*tileSize, tileSize, tileSize);
+    } else {
+        ctx.fillStyle = "rgba(76, 175, 80, 0.9)";
+        ctx.fillRect(player.x*tileSize+5, player.y*tileSize+5, tileSize-10, tileSize-10);
+        ctx.font = `${tileSize/2}px Arial`;
+        ctx.fillStyle = "white";
+        ctx.fillText("🪶", player.x*tileSize + tileSize/3, player.y*tileSize + tileSize/1.5);
+    }
+}
+
+function drawEnemy(){
+    if(spritesReady && enemySprite.complete && enemySprite.naturalWidth > 0){
+        ctx.drawImage(enemySprite, enemy.x*tileSize, enemy.y*tileSize, tileSize, tileSize);
+    } else {
+        ctx.fillStyle = "rgba(211, 47, 47, 0.9)";
+        ctx.fillRect(enemy.x*tileSize+5, enemy.y*tileSize+5, tileSize-10, tileSize-10);
+        ctx.font = `${tileSize/2}px Arial`;
+        ctx.fillStyle = "white";
+        ctx.fillText("⚔️", enemy.x*tileSize + tileSize/3, enemy.y*tileSize + tileSize/1.5);
+    }
+}
+
+function moveEnemy(){
+    enemyTimer++;
+    if(enemyTimer < 25) return;
+    enemyTimer = 0;
+    
+    let dx = player.x - enemy.x;
+    let dy = player.y - enemy.y;
+    
+    if(Math.abs(dx) > Math.abs(dy)){
+        let newX = enemy.x + Math.sign(dx);
+        if(levels[level][newX]?.[enemy.y] !== 1 && newX >= 0 && newX < 8){
+            enemy.x = newX;
+        } else if(levels[level][enemy.x]?.[enemy.y + Math.sign(dy)] !== 1){
+            enemy.y += Math.sign(dy);
+        }
+    } else {
+        let newY = enemy.y + Math.sign(dy);
+        if(levels[level][enemy.x]?.[newY] !== 1 && newY >= 0 && newY < 8){
+            enemy.y = newY;
+        } else if(levels[level][enemy.x + Math.sign(dx)]?.[enemy.y] !== 1){
+            enemy.x += Math.sign(dx);
+        }
+    }
+}
+
+function movePlayer(dx, dy){
+    let maze = levels[level];
+    let nx = player.x + dx;
+    let ny = player.y + dy;
+    
+    if(ny >= 0 && nx >= 0 && ny < maze.length && nx < maze[0].length){
+        if(maze[ny][nx] !== 1){
+            player.x = nx;
+            player.y = ny;
+            checkGameState();
+            drawFull();
+        }
+    }
+}
+
+function checkGameState(){
+    let maze = levels[level];
+    
+    if(player.x === enemy.x && player.y === enemy.y){
+        alert("⚠️ ¡Te atrapó el guardián espiritual! Reinicias el nivel...");
+        resetPositions();
+        drawFull();
+        return;
+    }
+    
+    if(maze[player.y][player.x] === 2){
+        level++;
+        if(level >= levels.length){
+            alert("🏆 ¡Felicidades! Te has convertido en Guardián de la Cultura Morelense 🏆\n\n✨ Has completado la aventura por los pueblos Tlahuicas, Xochimilcas y Cohuatlicas ✨");
+            level = 0;
+        }
+        document.getElementById("level").innerText = level+1;
+        resetPositions();
+        drawFull();
+    }
+}
+
+function drawFull(){
+    if(!canvas.width) return;
+    drawBackground();
+    drawMaze();
+    drawPlayer();
+    drawEnemy();
+}
+
+function gameLoop(){
+    moveEnemy();
+    checkGameState();
+    drawFull();
+    requestAnimationFrame(gameLoop);
+}
+
+// Controles táctiles
+document.querySelectorAll('.ctrl-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const dir = btn.getAttribute('data-dir');
+        if(dir === 'up') movePlayer(0, -1);
+        if(dir === 'down') movePlayer(0, 1);
+        if(dir === 'left') movePlayer(-1, 0);
+        if(dir === 'right') movePlayer(1, 0);
+    });
+    
+    btn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        const dir = btn.getAttribute('data-dir');
+        if(dir === 'up') movePlayer(0, -1);
+        if(dir === 'down') movePlayer(0, 1);
+        if(dir === 'left') movePlayer(-1, 0);
+        if(dir === 'right') movePlayer(1, 0);
+    });
+});
+
+// Botón de reinicio
+document.getElementById('resetBtn').addEventListener('click', () => {
+    resetPositions();
+    drawFull();
+});
+
+document.getElementById('resetBtn').addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    resetPositions();
+    drawFull();
+});
+
+// Teclado para desarrollo
+document.addEventListener("keydown", e=>{
+    if(e.key === "ArrowUp") movePlayer(0, -1);
+    if(e.key === "ArrowDown") movePlayer(0, 1);
+    if(e.key === "ArrowLeft") movePlayer(-1, 0);
+    if(e.key === "ArrowRight") movePlayer(1, 0);
+    e.preventDefault();
+});
+
+// Inicialización
+resizeCanvas();
+resetPositions();
+
+setTimeout(() => {
+    drawFull();
+    gameLoop();
+}, 100);
+</script>
+</body>
+</html>

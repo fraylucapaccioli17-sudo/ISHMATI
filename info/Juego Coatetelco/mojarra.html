@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Coatetelco: Limpia el Lago - Pez vs Basura</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+<!-- Pantalla de inicio con la tarjeta que pediste -->
+<div id="menu" class="juego-card">
+    <div style="font-size: 4rem;">🐟🌊</div>
+    <h3>Coatetelco: Limpia el Lago</h3>
+    <p>Un juego ecológico donde un pez valiente lucha contra la contaminación para salvar el Lago de Coatetelco en Morelos.</p>
+    <p><strong>🎯 Mecánica:</strong> Controla al pez, dispara burbujas y elimina toda la basura (botellas, latas y bolsas) antes de que te toquen.</p>
+    <button id="startBtn" class="btn-jugar">🎮 Jugar ahora</button>
+    <div class="controles-info">
+        📱 Móvil: Joystick táctil + Botón disparar &nbsp;&nbsp;|&nbsp;&nbsp; 🖥️ PC: WASD + Click izquierdo
+    </div>
+</div>
+
+<!-- UI del juego -->
+<div id="gameUI" style="display: none;">
+    <div class="game-header">
+        <span>🐟 Salud: <span id="hpValue">100</span></span>
+        <span>🗑️ Basura eliminada: <span id="scoreValue">0</span></span>
+        <span>⭐ Nivel: <span id="levelValue">1</span></span>
+        <span>🛡️ Escudo: <span id="shieldValue">0</span></span>
+    </div>
+    <canvas id="gameCanvas"></canvas>
+</div>
+
+<!-- Panel de mejora (level up) -->
+<div id="levelupPanel" class="levelup-panel">
+    <h3>🌿 MEJORA DEL LAGO 🌿</h3>
+    <div id="upgradeButtons"></div>
+</div>
+
+<!-- Controles táctiles para móviles -->
+<div id="touchControls" class="touch-controls">
+    <div class="joystick-container">
+        <div id="joystickBase" class="joystick-base">
+            <div id="joystickThumb" class="joystick-thumb"></div>
+        </div>
+    </div>
+    <button id="mobileShootBtn" class="mobile-shoot-btn">💧 DISPARAR</button>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

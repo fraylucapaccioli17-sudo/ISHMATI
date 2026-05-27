@@ -1,18 +1,379 @@
-/* cuerpo */
-body{
-    margin:0;
-    font-family: Arial;
-}
-/* NAV*/
-nav{
-    background:#333;
-    padding:15px;
-    text-align:center;
+/* ===== RESET Y ESTILOS GLOBALES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-nav a{
-    color:white;
-    margin:0 15px;
-    text-decoration:none;
-    font-weight:bold;
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(145deg, #f0f5ff 0%, #d4e4fc 100%);
+    color: #1a2639;
+    line-height: 1.6;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #0a2f6c, #c9a03d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 0 20px rgba(201, 160, 61, 0.5);
+    margin: 30px 0 10px 0;
+}
+
+/* ===== NAV BAR ===== */
+nav {
+    background: linear-gradient(90deg, #0a1f44 0%, #1e3a8a 50%, #0a1f44 100%);
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 4px solid #c9a03d;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 0 2px #f5e7b2 inset;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+nav a {
+    color: #fae47e;
+    margin: 0 20px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 40px;
+    background: rgba(10, 31, 68, 0.4);
+    transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    display: inline-block;
+    box-shadow: 0 0 0 1px #c9a03d;
+    letter-spacing: 2px;
+}
+
+nav a:hover {
+    background: #c9a03d;
+    color: #0a1f44;
+    transform: scale(1.2) rotate(2deg);
+    box-shadow: 0 0 30px #f5b81b, 0 0 0 3px white;
+}
+
+/* ===== CARRUSEL ===== */
+.carousel {
+    width: 90%;
+    max-width: 1300px;
+    height: 500px;
+    margin: 40px auto;
+    overflow: hidden;
+    position: relative;
+    border-radius: 40px 40px 20px 20px;
+    box-shadow: 0 30px 40px rgba(0, 0, 0, 0.4), 0 0 0 6px #c9a03d, 0 0 0 12px #0a2f6c;
+    border: 3px dashed #ffffffb3;
+}
+
+.carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    transition: opacity 1.2s ease-in-out, transform 8s;
+    transform: scale(1);
+    filter: brightness(0.9) saturate(1.3);
+}
+
+.carousel img.active {
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.carousel::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.3), transparent 70%);
+    pointer-events: none;
+    z-index: 10;
+    mix-blend-mode: overlay;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.content-container {
+    max-width: 1300px;
+    margin: 50px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 35px;
+}
+
+/* ===== TARJETAS CON IMAGEN Y TEXTO ===== */
+.section-card {
+    display: flex;
+    gap: 30px;
+    background: rgba(255, 255, 255, 0.92);
+    border-radius: 30px;
+    padding: 25px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transition: all 0.4s ease;
+    border-left: 8px solid #c9a03d;
+    border-bottom: 3px solid #c9a03d;
+    align-items: center;
+}
+
+.section-card.reverse {
+    flex-direction: row-reverse;
+    border-left: none;
+    border-right: 8px solid #c9a03d;
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.25);
+    background: rgba(255, 255, 255, 0.97);
+}
+
+/* ===== IMAGEN DE LA SECCIÓN ===== */
+.section-img {
+    flex: 1;
+    min-width: 200px;
+    background-color: #f5f0e0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-img img {
+    width: 100%;
+    height: 250px;
+    object-fit: contain;
+    background-color: #f5f0e0;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+/* Grupo de dos imágenes (para la sección de publicidad) */
+.section-img-group {
+    flex: 1;
+    display: flex;
+    gap: 15px;
+    min-width: 200px;
+}
+
+.section-img-group .section-img {
+    flex: 1;
+    min-width: 0;
+}
+
+.section-img-group .section-img img {
+    height: 220px;
+}
+
+.section-card:hover .section-img img {
+    transform: scale(1.02);
+}
+
+/* ===== TEXTO DE LA SECCIÓN ===== */
+.section-text {
+    flex: 1.2;
+}
+
+.section-icon {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.section-text h2 {
+    font-size: 1.8rem;
+    color: #0a2f6c;
+    margin-bottom: 12px;
+    border-bottom: 3px solid #c9a03d;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+.section-text p {
+    font-size: 1rem;
+    margin-bottom: 18px;
+    color: #2c3e66;
+}
+
+/* ===== TAGS Y ETIQUETAS ===== */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tags span {
+    background: linear-gradient(135deg, #0a2f6c, #1e3a8a);
+    color: #fae47e;
+    padding: 6px 15px;
+    border-radius: 40px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.tags span:hover {
+    transform: scale(1.05);
+    background: #c9a03d;
+    color: #0a1f44;
+}
+
+/* ===== TÉCNICAS ARTÍSTICAS ===== */
+.tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.tech-grid span {
+    background: #0a2f6c20;
+    border: 2px solid #c9a03d;
+    padding: 6px 15px;
+    border-radius: 30px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #0a2f6c;
+    transition: 0.3s;
+}
+
+.tech-grid span:hover {
+    background: #c9a03d;
+    color: white;
+    transform: scale(1.02);
+}
+
+/* ===== CORTOS ANIMADOS ===== */
+.cortos-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin: 15px 0;
+}
+
+.corto {
+    background: linear-gradient(135deg, #0a2f6c, #1e3a8a);
+    color: #fae47e;
+    padding: 10px;
+    text-align: center;
+    border-radius: 15px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.2);
+}
+
+.corto:hover {
+    transform: scale(1.05);
+    background: #c9a03d;
+    color: #0a1f44;
+}
+
+.tag-stop {
+    text-align: center;
+    margin-top: 12px;
+    background: #0a2f6c20;
+    padding: 10px;
+    border-radius: 30px;
+    font-weight: bold;
+    color: #0a2f6c;
+    border: 2px dashed #c9a03d;
+    font-size: 0.9rem;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    background: linear-gradient(135deg, #0a1f44, #0b2b5c);
+    color: #ffdf8c;
+    padding: 30px 20px;
+    font-size: 1.2rem;
+    border-top: 8px solid #c9a03d;
+    border-bottom: 8px solid #c9a03d;
+    box-shadow: 0 -10px 30px #0a1f44, 0 0 0 4px #f5e9c4 inset;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    position: relative;
+    margin-top: 60px;
+}
+
+footer p {
+    margin: 8px 0;
+    text-shadow: 2px 2px 0 #0a1f44;
+}
+
+footer::after {
+    content: "⚜️⚜️⚜️";
+    font-size: 1.5rem;
+    letter-spacing: 12px;
+    display: block;
+    opacity: 0.6;
+}
+
+/* ===== ADAPTACIÓN MÓVIL ===== */
+@media (max-width: 900px) {
+    .section-card,
+    .section-card.reverse {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .section-text h2 {
+        font-size: 1.5rem;
+    }
+
+    .section-img-group {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .cortos-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    nav a {
+        display: block;
+        margin: 10px auto;
+        width: 80%;
+        font-size: 1rem;
+    }
+
+    .carousel {
+        height: 250px;
+    }
+
+    .section-img img {
+        height: 180px;
+    }
+
+    .section-img-group .section-img img {
+        height: 160px;
+    }
+
+    .cortos-grid {
+        grid-template-columns: 1fr;
+    }
 }
