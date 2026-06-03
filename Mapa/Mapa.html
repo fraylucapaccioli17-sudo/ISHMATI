@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Mapa Interactivo - Estado de Morelos</title>
+  <link rel="stylesheet" href="mapa.css">
+</head>
+<body>
+
+<h1>🗺️ Rompecabezas del Estado de Morelos</h1>
+
+<div class="info">
+  <span>⏱️ Tiempo: <span id="tiempo">180</span> s</span>
+  <span>🎯 Puntos: <span id="puntos">0</span></span>
+  <span>✅ Completados: <span id="completados">0</span>/<span id="total">0</span></span>
+</div>
+
+<div class="contenedor">
+
+  <!-- MAPA SVG -->
+  <div class="mapa-wrapper">
+    <svg viewBox="0 0 900 650" id="mapa" xmlns="http://www.w3.org/2000/svg">
+      
+      <!-- Fondo del mapa -->
+      <rect width="900" height="650" fill="#f0f4e8" rx="10" />
+      
+      <!-- Título del mapa -->
+      <text x="450" y="40" class="mapa-title" text-anchor="middle">ESTADO DE MORELOS</text>
+
+      <!-- ===== MUNICIPIO: CUERNAVACA ===== -->
+      <g class="municipio-group">
+        <path id="cuernavaca"
+          d="M280 180 L360 160 M360 160 L400 200 M400 200 L350 240 M350 240 L280 220 M280 220 L280 180"
+          onclick="mostrarPregunta('cuernavaca')" />
+        <text x="325" y="210" class="municipio-label" text-anchor="middle">
+          <tspan x="325" dy="0">Cuernavaca</tspan>
+        </text>
+      </g>
+
+      <!-- ===== MUNICIPIO: JIUTEPEC ===== -->
+      <g class="municipio-group">
+        <path id="jiutepec"
+          d="M380 210 L460 190 L490 240 L430 270 L380 250 Z"
+          onclick="mostrarPregunta('jiutepec')" />
+        <text x="430" y="235" class="municipio-label" text-anchor="middle">Jiutepec</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: TEMIXCO ===== -->
+      <g class="municipio-group">
+        <path id="temixco"
+          d="M200 240 L280 220 L300 270 L230 300 L190 280 Z"
+          onclick="mostrarPregunta('temixco')" />
+        <text x="240" y="265" class="municipio-label" text-anchor="middle">Temixco</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: CUAUTLA ===== -->
+      <g class="municipio-group">
+        <path id="cuautla"
+          d="M560 180 L640 160 L670 210 L610 240 L560 210 Z"
+          onclick="mostrarPregunta('cuautla')" />
+        <text x="610" y="205" class="municipio-label" text-anchor="middle">Cuautla</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: YAUTEPEC ===== -->
+      <g class="municipio-group">
+        <path id="yautepec"
+          d="M480 270 L560 250 L590 300 L530 330 L480 310 Z"
+          onclick="mostrarPregunta('yautepec')" />
+        <text x="530" y="295" class="municipio-label" text-anchor="middle">Yautepec</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: AYALA ===== -->
+      <g class="municipio-group">
+        <path id="ayala"
+          d="M600 250 L680 230 L710 280 L650 310 L600 280 Z"
+          onclick="mostrarPregunta('ayala')" />
+        <text x="650" y="275" class="municipio-label" text-anchor="middle">Ayala</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: JONACATEPEC ===== -->
+      <g class="municipio-group">
+        <path id="jonacatepec"
+          d="M700 200 L770 180 L790 220 L740 250 L700 230 Z"
+          onclick="mostrarPregunta('jonacatepec')" />
+        <text x="745" y="220" class="municipio-label" text-anchor="middle">Jonacatepec</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: TLAYACAPAN ===== -->
+      <g class="municipio-group">
+        <path id="tlayacapan"
+          d="M520 100 L600 90 L620 130 L560 150 L520 130 Z"
+          onclick="mostrarPregunta('tlayacapan')" />
+        <text x="570" y="125" class="municipio-label" text-anchor="middle">Tlayacapan</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: TEPOZTLÁN ===== -->
+      <g class="municipio-group">
+        <path id="tepoztlan"
+          d="M180 120 L260 100 L280 140 L220 170 L180 150 Z"
+          onclick="mostrarPregunta('tepoztlan')" />
+        <text x="230" y="140" class="municipio-label" text-anchor="middle">Tepoztlán</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: XOCHITEPEC ===== -->
+      <g class="municipio-group">
+        <path id="xochitepec"
+          d="M280 280 L360 260 L380 310 L320 340 L280 320 Z"
+          onclick="mostrarPregunta('xochitepec')" />
+        <text x="330" y="305" class="municipio-label" text-anchor="middle">Xochitepec</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: ZACATEPEC ===== -->
+      <g class="municipio-group">
+        <path id="zacatepec"
+          d="M380 300 L450 280 L470 330 L410 360 L380 340 Z"
+          onclick="mostrarPregunta('zacatepec')" />
+        <text x="425" y="325" class="municipio-label" text-anchor="middle">Zacatepec</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: PUENTE DE IXTLA ===== -->
+      <g class="municipio-group">
+        <path id="puenteixtla"
+          d="M460 340 L540 320 L560 370 L500 400 L460 380 Z"
+          onclick="mostrarPregunta('puenteixtla')" />
+        <text x="510" y="365" class="municipio-label" text-anchor="middle">Puente de Ixtla</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: AMACUZAC ===== -->
+      <g class="municipio-group">
+        <path id="amacuzac"
+          d="M560 370 L640 350 L660 400 L600 430 L560 410 Z"
+          onclick="mostrarPregunta('amacuzac')" />
+        <text x="610" y="395" class="municipio-label" text-anchor="middle">Amacuzac</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: JOJUTLA ===== -->
+      <g class="municipio-group">
+        <path id="jojutla"
+          d="M650 390 L730 370 L750 420 L690 450 L650 430 Z"
+          onclick="mostrarPregunta('jojutla')" />
+        <text x="700" y="415" class="municipio-label" text-anchor="middle">Jojutla</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: TLAQUILTENANGO ===== -->
+      <g class="municipio-group">
+        <path id="tlaquiltenango"
+          d="M730 340 L800 320 L810 370 L770 390 L730 370 Z"
+          onclick="mostrarPregunta('tlaquiltenango')" />
+        <text x="770" y="355" class="municipio-label" text-anchor="middle">Tlaquiltenango</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: EMILIANO ZAPATA ===== -->
+      <g class="municipio-group">
+        <path id="emilianozapata"
+          d="M320 340 L390 320 L410 370 L350 400 L320 380 Z"
+          onclick="mostrarPregunta('emilianozapata')" />
+        <text x="365" y="365" class="municipio-label" text-anchor="middle">Emiliano Zapata</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: AXOCHIAPAN ===== -->
+      <g class="municipio-group">
+        <path id="axochiapan"
+          d="M750 450 L830 430 L840 480 L790 500 L750 480 Z"
+          onclick="mostrarPregunta('axochiapan')" />
+        <text x="790" y="470" class="municipio-label" text-anchor="middle">Axochiapan</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: TOTOLAPAN ===== -->
+      <g class="municipio-group">
+        <path id="totolapan"
+          d="M100 160 L170 140 L190 180 L140 210 L100 190 Z"
+          onclick="mostrarPregunta('totolapan')" />
+        <text x="145" y="180" class="municipio-label" text-anchor="middle">Totolapan</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: ATLATLAHUCAN ===== -->
+      <g class="municipio-group">
+        <path id="atlatlahucan"
+          d="M400 120 L470 110 L490 150 L430 170 L400 150 Z"
+          onclick="mostrarPregunta('atlatlahucan')" />
+        <text x="445" y="145" class="municipio-label" text-anchor="middle">Atlatlahucan</text>
+      </g>
+
+      <!-- ===== MUNICIPIO: OCOYOACAC ===== -->
+      <g class="municipio-group">
+        <path id="ocoyoacac"
+          d="M120 300 L200 280 L210 330 L150 360 L120 340 Z"
+          onclick="mostrarPregunta('ocoyoacac')" />
+        <text x="165" y="325" class="municipio-label" text-anchor="middle">Ocoyoacac</text>
+      </g>
+
+    </svg>
+  </div>
+
+  <!-- PANEL -->
+  <div class="panel">
+    <h3>🎮 Instrucciones</h3>
+    <p>Selecciona un municipio del mapa, responde la pregunta y gana puntos.</p>
+    <button class="btn-reiniciar" onclick="reiniciar()">🔄 Reiniciar juego</button>
+    <div class="panel-info">
+      <p>✅ Verde = Completado</p>
+      <p>🟡 Amarillo = Seleccionado</p>
+      <p>⚪ Transparente = Pendiente</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- PREGUNTAS -->
+<div id="pregunta" class="pregunta"></div>
+
+<script src="mapa.js"></script>
+</body>
+</html>
