@@ -1,0 +1,319 @@
+/* ===== RESET Y ESTILOS GLOBALES ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(145deg, #f0f5ff 0%, #d4e4fc 100%);
+    color: #1a2639;
+    line-height: 1.6;
+    min-height: 100vh;
+    padding: 15px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: linear-gradient(135deg, #0a2f6c, #c9a03d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 15px 0;
+}
+
+/* ===== INFO ===== */
+.info {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    background: linear-gradient(90deg, #0a1f44, #1e3a8a);
+    color: #fae47e;
+    padding: 12px 20px;
+    border-radius: 50px;
+    max-width: 500px;
+    margin: 0 auto 25px auto;
+    font-size: 1rem;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border: 2px solid #c9a03d;
+    flex-wrap: wrap;
+}
+
+.info span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ===== CONTENEDOR PRINCIPAL ===== */
+.contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+    flex-wrap: wrap;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* ===== MAPA WRAPPER - SCROLL HORIZONTAL ===== */
+.mapa-wrapper {
+    background: #fff;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+    border: 4px solid #c9a03d;
+    overflow-x: auto;
+    overflow-y: hidden;
+    max-width: 100%;
+}
+
+/* Scrollbar personalizada */
+.mapa-wrapper::-webkit-scrollbar {
+    height: 10px;
+}
+
+.mapa-wrapper::-webkit-scrollbar-track {
+    background: #e0e0e0;
+    border-radius: 10px;
+}
+
+.mapa-wrapper::-webkit-scrollbar-thumb {
+    background: #c9a03d;
+    border-radius: 10px;
+}
+
+.mapa-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #0a2f6c;
+}
+
+svg {
+    width: 1000px;
+    height: auto;
+    min-width: 1000px;
+    display: block;
+    background: #f9f1d9;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+/* Título del mapa */
+.mapa-title {
+    font-size: 22px;
+    font-weight: bold;
+    fill: #0a2f6c;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    text-shadow: 1px 1px 0 white;
+}
+
+/* ===== MUNICIPIOS ===== */
+path {
+    fill: #d4c9a8;
+    stroke: #0a2f6c;
+    stroke-width: 2.5;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0.85;
+}
+
+path:hover {
+    fill: #c9a03d;
+    opacity: 1;
+    filter: drop-shadow(0 0 5px rgba(201, 160, 61, 0.8));
+}
+
+/* ===== ETIQUETAS DE LOS MUNICIPIOS - BIEN GRANDES Y LEGIBLES ===== */
+.municipio-label {
+    font-size: 14px;
+    font-weight: bold;
+    fill: #0a2f6c;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    pointer-events: none;
+    dominant-baseline: middle;
+}
+
+/* ===== PANEL LATERAL ===== */
+.panel {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 20px;
+    min-width: 220px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border-left: 6px solid #c9a03d;
+    border-bottom: 3px solid #c9a03d;
+}
+
+.panel h3 {
+    color: #0a2f6c;
+    font-size: 1.3rem;
+    margin-bottom: 12px;
+    border-bottom: 2px solid #c9a03d;
+    display: inline-block;
+}
+
+.panel p {
+    margin: 8px 0;
+    color: #2c3e66;
+}
+
+.btn-reiniciar {
+    background: linear-gradient(135deg, #0a2f6c, #1e3a8a);
+    color: #fae47e;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    width: 100%;
+    margin: 15px 0;
+    transition: 0.3s;
+    border: 1px solid #c9a03d;
+}
+
+.btn-reiniciar:hover {
+    background: #c9a03d;
+    color: #0a1f44;
+    transform: scale(1.02);
+    box-shadow: 0 0 15px #c9a03d;
+}
+
+.panel-info {
+    margin-top: 12px;
+    padding-top: 8px;
+    border-top: 1px dashed #c9a03d;
+    font-size: 0.85rem;
+}
+
+.panel-info p {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ===== PREGUNTAS ===== */
+.pregunta {
+    margin: 35px auto;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    width: 90%;
+    max-width: 550px;
+    border-radius: 25px;
+    border: 3px solid #c9a03d;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.pregunta h3 {
+    color: #0a2f6c;
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+}
+
+.pregunta button {
+    background: linear-gradient(135deg, #0a2f6c, #1e3a8a);
+    color: #fae47e;
+    border: none;
+    padding: 12px 20px;
+    margin: 8px;
+    border-radius: 40px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    width: calc(100% - 20px);
+    max-width: 280px;
+    font-weight: bold;
+}
+
+.pregunta button:hover {
+    background: #c9a03d;
+    color: #0a1f44;
+    transform: scale(1.02);
+}
+
+/* ===== RESPONSIVE: CELULAR - LOS NOMBRES SE VEN GRANDES ===== */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    .info {
+        gap: 15px;
+        padding: 10px 15px;
+        font-size: 0.8rem;
+        max-width: 100%;
+    }
+
+    .contenedor {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mapa-wrapper {
+        padding: 10px;
+        width: 100%;
+    }
+
+    svg {
+        min-width: 900px;
+    }
+
+    /* ¡AUMENTAR TAMAÑO DE LOS NOMBRES EN CELULAR! */
+    .municipio-label {
+        font-size: 16px !important;
+        font-weight: 900 !important;
+        fill: #0a2f6c;
+    }
+    
+    /* Fondo más opaco para mejor contraste en móvil */
+    .municipio-group rect {
+        fill: white !important;
+        fill-opacity: 0.9 !important;
+    }
+
+    .panel {
+        width: 100%;
+        max-width: 350px;
+        text-align: center;
+    }
+
+    .pregunta {
+        width: 95%;
+    }
+
+    .pregunta h3 {
+        font-size: 1.1rem;
+    }
+
+    .pregunta button {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .info {
+        font-size: 0.7rem;
+        gap: 10px;
+    }
+
+    svg {
+        min-width: 850px;
+    }
+
+    /* Nombres aún más grandes para pantallas muy pequeñas */
+    .municipio-label {
+        font-size: 15px !important;
+        font-weight: 900 !important;
+    }
+}
