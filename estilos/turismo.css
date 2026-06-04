@@ -77,19 +77,17 @@ nav a:hover {
 .carousel img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     position: absolute;
     top: 0;
     left: 0;
-    opacity: 1;
-    transition: opacity 1.2s ease-in-out, transform 8s;
-    transform: scale(1);
-    filter: brightness(0.9) saturate(1.3);
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    background-color: #0a1f44;
 }
 
 .carousel img.active {
     opacity: 1;
-    transform: scale(1.05);
 }
 
 .carousel::after {
@@ -99,7 +97,7 @@ nav a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.3), transparent 70%);
+    background: radial-gradient(circle at 30% 30%, rgba(255, 215, 0, 0.2), transparent 70%);
     pointer-events: none;
     z-index: 10;
     mix-blend-mode: overlay;
@@ -163,7 +161,7 @@ nav a:hover {
     transition: transform 0.4s ease;
 }
 
-/* Grupo de dos imágenes (para secciones con dos fotos) */
+/* Grupo de dos imágenes */
 .section-img-group {
     flex: 1;
     display: flex;

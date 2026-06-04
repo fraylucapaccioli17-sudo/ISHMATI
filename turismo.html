@@ -17,9 +17,16 @@
         <a href="turismo.html">Turismo</a>
     </nav>
 
-    <!-- Carrusel (una sola imagen por ahora) -->
+    <!-- CARRUSEL CORREGIDO -->
     <div class="carousel">
-        <img src="Imagenes/turismo_carrusel.jpg" class="active" alt="Turismo Morelos">
+        <img src="Imagenes/turismo_logistica.jpeg" alt="Turismo Morelos 1">
+        <img src="Imagenes/turismo_gestion.jpg" alt="Turismo Morelos 2">
+        <img src="Imagenes/turismo_gastronomia2.jpeg" alt="Turismo Morelos 3">
+        <img src="Imagenes/turismo_gastronomia1.jpeg" alt="Turismo Morelos 4">
+        <img src="Imagenes/turismo_festival.jpeg" alt="Turismo Morelos 5">
+        <img src="Imagenes/turismo_campo2.jpeg" alt="Turismo Morelos 6">
+        <img src="Imagenes/turismo_campo1.jpeg" alt="Turismo Morelos 7">
+        <img src="Imagenes/turismo_artesanos.jpg" alt="Turismo Morelos 8">
     </div>
 
     <!-- ===== CONTENIDO PRINCIPAL ===== -->
@@ -63,10 +70,10 @@
         <div class="section-card">
             <div class="section-img-group">
                 <div class="section-img">
-                    <img src="Imagenes/turismo_campo1.jpg" alt="Investigación de campo 1">
+                    <img src="Imagenes/turismo_campo1.jpeg" alt="Investigación de campo 1">
                 </div>
                 <div class="section-img">
-                    <img src="Imagenes/turismo_campo2.jpg" alt="Investigación de campo 2">
+                    <img src="Imagenes/turismo_campo2.jpeg" alt="Investigación de campo 2">
                 </div>
             </div>
             <div class="section-text">
@@ -85,7 +92,7 @@
         <!-- Sección 4: Planificación y Logística (reverse) -->
         <div class="section-card reverse">
             <div class="section-img">
-                <img src="Imagenes/turismo_logistica.jpg" alt="Planificación y logística">
+                <img src="Imagenes/turismo_logistica.jpeg" alt="Planificación y logística">
             </div>
             <div class="section-text">
                 <div class="section-icon">📋⚙️</div>
@@ -103,10 +110,10 @@
         <div class="section-card">
             <div class="section-img-group">
                 <div class="section-img">
-                    <img src="Imagenes/turismo_gastronomia1.jpg" alt="Degustación gastronómica 1">
+                    <img src="Imagenes/turismo_gastronomia1.jpeg" alt="Degustación gastronómica 1">
                 </div>
                 <div class="section-img">
-                    <img src="Imagenes/turismo_gastronomia2.jpg" alt="Degustación gastronómica 2">
+                    <img src="Imagenes/turismo_gastronomia2.jpeg" alt="Degustación gastronómica 2">
                 </div>
             </div>
             <div class="section-text">
@@ -124,7 +131,7 @@
         <!-- Sección 6: Cierre - El Festival Ishmati (destacado) -->
         <div class="section-card reverse">
             <div class="section-img">
-                <img src="Imagenes/turismo_festival.jpg" alt="Festival Ishmati">
+                <img src="Imagenes/turismo_festival.jpeg" alt="Festival Ishmati">
             </div>
             <div class="section-text">
                 <div class="section-icon">🌟🎉</div>
@@ -144,5 +151,56 @@
         <p>Turismo | Festival Ishmati | Morelos Unido por su Cultura</p>
     </footer>
 
+    <!-- SCRIPT PARA EL CARRUSEL -->
+    <script>
+        // Seleccionar todas las imágenes del carrusel
+        const imagenes = document.querySelectorAll('.carousel img');
+        let indiceActual = 0;
+        let intervalo;
+
+        // Función para mostrar la imagen activa
+        function mostrarImagen(indice) {
+            // Ocultar todas las imágenes
+            imagenes.forEach((img, i) => {
+                img.classList.remove('active');
+                img.style.opacity = '0';
+            });
+            
+            // Mostrar la imagen actual
+            imagenes[indice].classList.add('active');
+            imagenes[indice].style.opacity = '1';
+        }
+
+        // Función para avanzar a la siguiente imagen
+        function siguienteImagen() {
+            indiceActual = (indiceActual + 1) % imagenes.length;
+            mostrarImagen(indiceActual);
+        }
+
+        // Iniciar el carrusel automático cada 3 segundos
+        function iniciarCarrusel() {
+            if (intervalo) clearInterval(intervalo);
+            intervalo = setInterval(siguienteImagen, 3000); // 3000ms = 3 segundos
+        }
+
+        // Inicializar: mostrar primera imagen y empezar el carrusel
+        window.onload = () => {
+            if (imagenes.length > 0) {
+                mostrarImagen(0);
+                iniciarCarrusel();
+            }
+        };
+
+        // Opcional: pausar el carrusel cuando el mouse está encima
+        const carrusel = document.querySelector('.carousel');
+        if (carrusel) {
+            carrusel.addEventListener('mouseenter', () => {
+                if (intervalo) clearInterval(intervalo);
+            });
+            carrusel.addEventListener('mouseleave', () => {
+                iniciarCarrusel();
+            });
+        }
+    </script>
 </body>
 </html>
