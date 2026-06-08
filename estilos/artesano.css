@@ -1,44 +1,81 @@
-         body {
-            background-color: #f8f9fa;
-        }
-        .artesano-detalle {
-            max-width: 800px;
-            margin: 2rem auto;
-            background-color: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .artesano-detalle img {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-        }
-        .artesano-info {
-            padding: 2rem;
-        }
-        .btn-volver {
-            background-color: #2c3e50;
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 8px;
-            text-decoration: none;
-            display: inline-block;
-            margin-bottom: 1rem;
-        }
-        .btn-volver:hover {
-            background-color: #1a252f;
-            color: white;
-        }
-        .especialidad {
-            color: #e67e22;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #2c3e50;
-            color: white;
-            margin-top: 2rem;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.artesano-detalle {
+    max-width: 800px;
+    margin: 2rem auto;
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.btn-volver {
+    background-color: #2c3e50;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    display: inline-block;
+    margin: 1rem 0 0 1rem;
+}
+
+.btn-volver:hover {
+    background-color: #1a252f;
+    color: white;
+}
+
+.artesano-info {
+    padding: 2rem;
+}
+
+.artesano-info h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+}
+
+.especialidad {
+    color: #e67e22;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #e67e22;
+    display: inline-block;
+}
+
+.artesano-info h4 {
+    color: #2c3e50;
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.artesano-info p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #2c3e50;
+    color: white;
+    margin-top: 2rem;
+}

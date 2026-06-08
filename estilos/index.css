@@ -1,4 +1,7 @@
-/* ===== RESET Y ESTILOS GLOBALES ===== */
+/* ============================================= */
+/* 1. RESET Y ESTILOS GLOBALES                   */
+/* ============================================= */
+
 * {
     margin: 0;
     padding: 0;
@@ -25,7 +28,11 @@ h1 {
     margin: 30px 0 10px 0;
 }
 
-/* ===== HEADER CON LOGO REDONDEADO ===== */
+
+/* ============================================= */
+/* 2. HEADER CON LOGO REDONDEADO                 */
+/* ============================================= */
+
 .header-container {
     display: flex;
     align-items: center;
@@ -84,7 +91,11 @@ h1 {
     background-clip: text;
 }
 
-/* ===== NAV BAR DE LOCURA ===== */
+
+/* ============================================= */
+/* 3. NAV BAR DE LOCURA                         */
+/* ============================================= */
+
 nav {
     background: linear-gradient(90deg, #0a1f44 0%, #1e3a8a 50%, #0a1f44 100%);
     padding: 20px 0;
@@ -121,7 +132,11 @@ nav a:hover {
     box-shadow: 0 0 30px #f5b81b, 0 0 0 3px white;
 }
 
-/* ===== CARRUSEL ALUCINANTE ===== */
+
+/* ============================================= */
+/* 4. CARRUSEL ALUCINANTE                       */
+/* ============================================= */
+
 .carousel {
     width: 90%;
     max-width: 1300px;
@@ -165,7 +180,11 @@ nav a:hover {
     mix-blend-mode: overlay;
 }
 
-/* ===== ÁREAS / TARJETAS ===== */
+
+/* ============================================= */
+/* 5. ÁREAS / TARJETAS                           */
+/* ============================================= */
+
 .areas {
     display: flex;
     justify-content: center;
@@ -227,7 +246,11 @@ nav a:hover {
     color: #1e3a8a;
 }
 
-/* ===== MUNICIPIOS (Bootstrap + estilos extra) ===== */
+
+/* ============================================= */
+/* 6. REGIONES / MUNICIPIOS (Bootstrap + extras) */
+/* ============================================= */
+
 .container h2 {
     font-size: 2.5rem;
     font-weight: bold;
@@ -270,7 +293,11 @@ nav a:hover {
     font-size: 1.5rem;
 }
 
-/* ===== SECCIÓN ARTESANOS (ESTILO COHERENTE) ===== */
+
+/* ============================================= */
+/* 7. SECCIÓN ARTESANOS                          */
+/* ============================================= */
+
 .artesanos {
     padding: 50px 30px;
     background: linear-gradient(145deg, #fff5e6 0%, #ffe6c7 100%);
@@ -388,7 +415,11 @@ nav a:hover {
     font-weight: 600;
 }
 
-/* ===== FOOTER DORADO ===== */
+
+/* ============================================= */
+/* 8. FOOTER DORADO                              */
+/* ============================================= */
+
 footer {
     text-align: center;
     background: linear-gradient(135deg, #0a1f44, #0b2b5c);
@@ -419,7 +450,12 @@ footer::after {
     margin-top: 10px;
 }
 
-/* ===== RESPONSIVE: ADAPTACIÓN PARA MÓVIL ===== */
+
+/* ============================================= */
+/* 9. RESPONSIVE: ADAPTACIÓN PARA MÓVIL         */
+/* ============================================= */
+
+/* Tablets y pantallas medianas */
 @media (max-width: 992px) {
     h1 {
         font-size: 2.2rem;
@@ -464,6 +500,7 @@ footer::after {
     }
 }
 
+/* Móviles grandes */
 @media (max-width: 768px) {
     h1 {
         font-size: 1.8rem;
@@ -556,6 +593,7 @@ footer::after {
     }
 }
 
+/* Móviles pequeños */
 @media (max-width: 480px) {
     h1 {
         font-size: 1.4rem;
